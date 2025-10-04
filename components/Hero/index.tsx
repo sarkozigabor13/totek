@@ -169,7 +169,7 @@ const Hero = () => {
   }, [match, players]);
   return (
     <>
-      <section className="overflow-hidden pt-35 pb-20 md:pt-40 xl:pt-46 xl:pb-25">
+      <section id="hero" className="overflow-hidden pt-35 pb-20 md:pt-40 xl:pt-46 xl:pb-25">
         <div className="max-w-c-1390 mx-auto px-4 md:px-8 2xl:px-0">
           <div className="flex lg:items-center lg:gap-8 xl:gap-32.5">
             <div className="md:w-1/2">
@@ -364,8 +364,19 @@ const Hero = () => {
                               null ? (
                                 <>
                                   <button
+                                    className="hover:opacity-100"
                                     style={{ cursor: "pointer" }}
                                     onClick={() => voteMatch(player.id, true)}
+                                    onMouseEnter={(e) => {
+                                      e.currentTarget.nextElementSibling?.classList.add(
+                                        "opacity-50",
+                                      );
+                                    }}
+                                    onMouseLeave={(e) => {
+                                      e.currentTarget.nextElementSibling?.classList.remove(
+                                        "opacity-50",
+                                      );
+                                    }}
                                   >
                                     <Image
                                       src="/images/icon/tick.png"
@@ -375,8 +386,19 @@ const Hero = () => {
                                     />
                                   </button>
                                   <button
+                                    className="hover:opacity-100"
                                     style={{ cursor: "pointer" }}
                                     onClick={() => voteMatch(player.id, false)}
+                                    onMouseEnter={(e) => {
+                                      e.currentTarget.previousElementSibling?.classList.add(
+                                        "opacity-50",
+                                      );
+                                    }}
+                                    onMouseLeave={(e) => {
+                                      e.currentTarget.previousElementSibling?.classList.remove(
+                                        "opacity-50",
+                                      );
+                                    }}
                                   >
                                     <Image
                                       src="/images/icon/wrong.png"
@@ -407,8 +429,19 @@ const Hero = () => {
                               null ? (
                                 <>
                                   <button
+                                    className="hover:opacity-100"
                                     style={{ cursor: "pointer" }}
                                     onClick={() => voteProgram(player.id, true)}
+                                    onMouseEnter={(e) => {
+                                      e.currentTarget.nextElementSibling?.classList.add(
+                                        "opacity-50",
+                                      );
+                                    }}
+                                    onMouseLeave={(e) => {
+                                      e.currentTarget.nextElementSibling?.classList.remove(
+                                        "opacity-50",
+                                      );
+                                    }}
                                   >
                                     <Image
                                       src="/images/icon/tick.png"
@@ -418,10 +451,21 @@ const Hero = () => {
                                     />
                                   </button>
                                   <button
+                                    className="hover:opacity-100"
                                     style={{ cursor: "pointer" }}
                                     onClick={() =>
                                       voteProgram(player.id, false)
                                     }
+                                    onMouseEnter={(e) => {
+                                      e.currentTarget.previousElementSibling?.classList.add(
+                                        "opacity-50",
+                                      );
+                                    }}
+                                    onMouseLeave={(e) => {
+                                      e.currentTarget.previousElementSibling?.classList.remove(
+                                        "opacity-50",
+                                      );
+                                    }}
                                   >
                                     <Image
                                       src="/images/icon/wrong.png"

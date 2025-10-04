@@ -5,13 +5,13 @@ const menuData: Menu[] = [
     id: 1,
     title: "Következő mérkőzés",
     newTab: false,
-    path: "/",
+    path: "/#hero",
   },
   {
     id: 2,
-    title: "Eddigi mérkőzések",
+    title: "Mérkőzések",
     newTab: false,
-    path: "/#features",
+    path: "/#matches",
   },
   {
     id: 2.1,
