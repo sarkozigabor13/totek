@@ -190,7 +190,7 @@ const Hero = () => {
     <>
       <section
         id="hero"
-        className="overflow-hidden pt-35 pb-20 md:pt-40 xl:pt-46 xl:pb-25"
+        className="overflow-hidden pt-25 lg:pt-35 pb-20 md:pt-40 xl:pt-46 xl:pb-25"
       >
         <div className="max-w-c-1390 mx-auto px-4 md:px-8 2xl:px-0">
           <div className="flex flex-col lg:flex-row lg:items-center lg:gap-8 xl:gap-32.5">
