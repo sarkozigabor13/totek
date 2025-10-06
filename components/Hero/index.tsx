@@ -90,8 +90,8 @@ const Hero = () => {
     if (error) return console.error(error);
 
     value
-    ? toast.success(`Remek hír, ${player} jön a közös progira!`)
-    : toast.error(`${player}, köszi a visszajelzést!`);
+      ? toast.success(`Remek hír, ${player} jön a közös progira!`)
+      : toast.error(`${player}, köszi a visszajelzést!`);
 
     setAttendance((prev) => ({
       ...prev,
@@ -186,11 +186,67 @@ const Hero = () => {
 
     fetchAttendance();
   }, [match, players]);
+
+  useEffect(() => {
+    if (!match || !players) return;
+
+    const subscription = supabase
+      .channel("attendance_changes")
+      .on(
+        "postgres_changes",
+        {
+          event: "*",
+          schema: "public",
+          table: "match_attendance",
+          filter: `match_id=eq.${match.id}`,
+        },
+        (payload) => {
+          const record = payload.new as {
+            player_id: string;
+            attending_match: boolean | null;
+            attending_program: boolean | null;
+          };
+
+          setAttendance((prev) => ({
+            ...prev,
+            [record.player_id]: {
+              attendingMatch: record.attending_match,
+              attendingProgram: record.attending_program,
+            },
+          }));
+
+          const player = players.find((p) => p.id === record.player_id);
+          const playerName = player ? player.name : record.player_id;
+
+          toast.custom((t) => (
+            <div
+              className={`${
+                t.visible ? "animate-enter" : "animate-leave"
+              } flex items-center gap-3 rounded-lg bg-blacksection px-4 py-3 text-white shadow-3xl`}
+            >
+              <Image
+                src="/images/icon/info.png"
+                alt="info"
+                width={20}
+                height={20}
+              />
+              <span>{playerName} új szavazatot adott le!</span>
+            </div>
+          ));
+        },
+      )
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(subscription);
+    };
+  }, [match, players]);
+
   return (
     <>
       <section
         id="hero"
-        className="overflow-hidden pt-25 lg:pt-35 pb-20 md:pt-40 xl:pt-46 xl:pb-25"
+        className="overflow-hidden pt-25 pb-20 md:pt-40 lg:pt-35 xl:pt-46 xl:pb-25"
       >
         <div className="max-w-c-1390 mx-auto px-4 md:px-8 2xl:px-0">
           <div className="flex flex-col lg:flex-row lg:items-center lg:gap-8 xl:gap-32.5">
@@ -323,7 +379,7 @@ const Hero = () => {
               </div>
             </div>
 
-            <div className="animate_right lg:w-1/2 mt-10 lg:mt-0">
+            <div className="animate_right mt-10 lg:mt-0 lg:w-1/2">
               <motion.div
                 variants={{
                   hidden: {

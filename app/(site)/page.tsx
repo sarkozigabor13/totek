@@ -25,9 +25,9 @@ export default function Home() {
   return (
     <main>
       <Hero />
-{/*       <Brands />
+      <Brands />
       <Matches />
-      <Players /> */}
+{/*       <Players />  */}
 {/*       <About />
       <FeaturesTab />
       <FunFact />

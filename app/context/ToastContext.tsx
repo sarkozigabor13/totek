@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { Toaster } from "react-hot-toast";
 import Image from "next/image";
 
+
 const ToasterContext = () => {
   const [position, setPosition] = useState<"top-center" | "bottom-right">("top-center");
 
@@ -29,6 +30,17 @@ const ToasterContext = () => {
           boxShadow: "0 25px 50px -12px rgb(0 0 0 / 0.25)",
           position: "relative",
           zIndex: 999999999999
+        },
+        custom: {
+          icon: (
+            <Image
+              src="/images/icon/info.png"
+              alt="info"
+              width={24}
+              height={24}
+            />
+          ),
+          style: { background: "#0f1012", border: "1px solid #0f1012" },
         },
         success: {
           icon: (
