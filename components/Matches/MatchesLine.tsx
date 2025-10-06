@@ -5,13 +5,13 @@ import Image from "next/image";
 export default function LatestResults1({ matches }) {
   return (
     <div className="mx-auto w-full">
-      <div className="bg-blacksection rounded-2xl px-8 py-7 shadow-2xl">
+      <div className="bg-blacksection rounded-2xl px-4 md:px-8 py-7 shadow-2xl">
         {matches?.map((match) => (
           <div
             key={match.id}
             className={`ring-custom-gray-200 mt-0.5 rounded-t-3xl bg-black ring-1 ${match.wld === "win" ? "ring-win" : match.wld === "lose" ? "ring-lose" : match.wld === "draw" ? "ring-draw" : ""}`}
           >
-            <h4 className="text-xs-md/tight px-8 py-4 text-center font-bold text-white">
+            <h4 className="text-xs-md/tight px-4 md:px-8 py-4 text-center font-bold text-white">
               {match?.location}
               <br />
               {formatDate(match?.date)}
@@ -19,7 +19,7 @@ export default function LatestResults1({ matches }) {
             <div
               className={`bg-blacksection relative mb-10 rounded-t-3xl after:absolute after:-bottom-[1px] after:h-px after:w-full ${match.wld === "win" ? "after-win" : match.wld === "lose" ? "after-lose" : match.wld === "draw" ? "after-draw" : ""}`}
             >
-              <div className="grid grid-cols-2 gap-x-3 border-b px-8 py-4 last:border-b-0">
+              <div className="grid grid-cols-2 gap-x-3 border-b px-4 md:px-8 py-4 last:border-b-0">
                 <div className="group/item items-top flex justify-between even:flex-row-reverse">
                   <div className="flex flex-col">
                     <div className="items-top flex gap-1.5 group-even/item:flex-row-reverse">
@@ -64,7 +64,7 @@ export default function LatestResults1({ matches }) {
                       <div className="mt-3 text-sm text-gray-200">
                         <div className="list-inside list-disc text-md">
                           {match.goals.map((goal, ix) => (
-                            <div className="flex gap-2 text-md" key={ix}>
+                            <div className="flex gap-2 text-md mb-2 md:mb-0" key={ix}>
                               <Image
                                 src={"/images/icon/ball.svg"}
                                 alt="goal"
@@ -72,6 +72,8 @@ export default function LatestResults1({ matches }) {
                                 height={16}
                                 className="inline-block"
                               />
+                              <div className="flex gap-0 md:gap-2 flex-col md:flex-row">
+
                               {goal.scorer?.name}
                               {goal.assist && (
                                 <span className="text-gray-400 text-md">
@@ -79,6 +81,7 @@ export default function LatestResults1({ matches }) {
                                   (gólpassz: {goal.assist.name})
                                 </span>
                               )}
+                              </div>
                             </div>
                           ))}
                         </div>
