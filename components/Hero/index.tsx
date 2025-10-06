@@ -222,7 +222,7 @@ const Hero = () => {
             <div
               className={`${
                 t.visible ? "animate-enter" : "animate-leave"
-              } flex items-center gap-3 rounded-lg bg-blacksection px-4 py-3 text-white shadow-3xl`}
+              } bg-blacksection shadow-3xl flex items-center gap-3 rounded-lg px-4 py-3 text-white`}
             >
               <Image
                 src="/images/icon/info.png"
@@ -277,8 +277,14 @@ const Hero = () => {
                 viewport={{ once: true }}
                 className="animate_top text-left"
               >
-                <h1 className="mb-5 pr-16 text-5xl font-bold text-black dark:text-white">
-                  🔥 TótÉk - {match?.opponent} 🔥
+                <h1 className="mb-5 text-center md:text-left text-5xl font-bold text-black md:pr-16 dark:text-white">
+                  <span className="hidden md:inline-flex">🔥</span>{" "}
+                  <span className="md:hidden">🔥</span> TótÉk{" "}
+                  <span className="md:hidden">🔥</span>{" "}
+                  <span className="md:inline-flex hidden">&nbsp;</span>{" "}
+                  <br className="md:hidden" /> x <br className="md:hidden" />{" "}
+                  <span className="md:inline-flex hidden">&nbsp;</span>{" "}
+                  {match?.opponent} <span className="hidden md:inline-flex">🔥</span>
                 </h1>
               </motion.div>
               <motion.div
