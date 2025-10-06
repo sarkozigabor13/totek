@@ -9,6 +9,7 @@ import { timeUntilMatch } from "@/utils/date/until";
 import { getWeatherForMatch } from "@/utils/weather/forecast";
 import { getWeatherDescription } from "@/utils/weather/codes";
 import { StatusBar } from "./StatusBar";
+import toast from "react-hot-toast";
 
 type Match = {
   id: string;
@@ -39,7 +40,11 @@ const Hero = () => {
   } | null>(null);
 
   // Meccsre voksolás
-  const voteMatch = async (playerId: string, value: boolean) => {
+  const voteMatch = async (
+    playerId: string,
+    value: boolean,
+    player: string,
+  ) => {
     if (!match) return;
 
     const updated = {
@@ -54,6 +59,10 @@ const Hero = () => {
       .upsert(updated, { onConflict: "match_id,player_id" });
     if (error) return console.error(error);
 
+    value
+      ? toast.success(`Remek hír, ${player} jön a meccsre!`)
+      : toast.error(`${player}, köszi a visszajelzést!`);
+
     setAttendance((prev) => ({
       ...prev,
       [playerId]: { ...prev[playerId], attendingMatch: value },
@@ -61,7 +70,11 @@ const Hero = () => {
   };
 
   // Közös program voksolás
-  const voteProgram = async (playerId: string, value: boolean) => {
+  const voteProgram = async (
+    playerId: string,
+    value: boolean,
+    player: string,
+  ) => {
     if (!match) return;
 
     const updated = {
@@ -76,6 +89,10 @@ const Hero = () => {
       .upsert(updated, { onConflict: "match_id,player_id" });
     if (error) return console.error(error);
 
+    value
+    ? toast.success(`Remek hír, ${player} jön a közös progira!`)
+    : toast.error(`${player}, köszi a visszajelzést!`);
+
     setAttendance((prev) => ({
       ...prev,
       [playerId]: { ...prev[playerId], attendingProgram: value },
@@ -83,7 +100,7 @@ const Hero = () => {
   };
 
   // Szavazat törlése (meccsre)
-  const deleteVote = async (playerId: string) => {
+  const deleteVote = async (playerId: string, player: string) => {
     if (!match) return;
 
     const { error } = await supabase
@@ -93,6 +110,8 @@ const Hero = () => {
       .eq("player_id", playerId);
 
     if (error) return console.error(error);
+
+    toast.success(`${player} most már újra szavazhatsz!`);
 
     setAttendance((prev) => ({
       ...prev,
@@ -169,10 +188,13 @@ const Hero = () => {
   }, [match, players]);
   return (
     <>
-      <section id="hero" className="overflow-hidden pt-35 pb-20 md:pt-40 xl:pt-46 xl:pb-25">
+      <section
+        id="hero"
+        className="overflow-hidden pt-35 pb-20 md:pt-40 xl:pt-46 xl:pb-25"
+      >
         <div className="max-w-c-1390 mx-auto px-4 md:px-8 2xl:px-0">
-          <div className="flex lg:items-center lg:gap-8 xl:gap-32.5">
-            <div className="md:w-1/2">
+          <div className="flex flex-col lg:flex-row lg:items-center lg:gap-8 xl:gap-32.5">
+            <div className="lg:w-1/2">
               <SectionHeader
                 align="left"
                 headerInfo={{
@@ -301,7 +323,7 @@ const Hero = () => {
               </div>
             </div>
 
-            <div className="animate_right hidden md:w-1/2 lg:block">
+            <div className="animate_right lg:w-1/2 mt-10 lg:mt-0">
               <motion.div
                 variants={{
                   hidden: {
@@ -366,7 +388,9 @@ const Hero = () => {
                                   <button
                                     className="hover:opacity-100"
                                     style={{ cursor: "pointer" }}
-                                    onClick={() => voteMatch(player.id, true)}
+                                    onClick={() =>
+                                      voteMatch(player.id, true, player.name)
+                                    }
                                     onMouseEnter={(e) => {
                                       e.currentTarget.nextElementSibling?.classList.add(
                                         "opacity-50",
@@ -388,7 +412,9 @@ const Hero = () => {
                                   <button
                                     className="hover:opacity-100"
                                     style={{ cursor: "pointer" }}
-                                    onClick={() => voteMatch(player.id, false)}
+                                    onClick={() =>
+                                      voteMatch(player.id, false, player.name)
+                                    }
                                     onMouseEnter={(e) => {
                                       e.currentTarget.previousElementSibling?.classList.add(
                                         "opacity-50",
@@ -431,7 +457,9 @@ const Hero = () => {
                                   <button
                                     className="hover:opacity-100"
                                     style={{ cursor: "pointer" }}
-                                    onClick={() => voteProgram(player.id, true)}
+                                    onClick={() =>
+                                      voteProgram(player.id, true, player.name)
+                                    }
                                     onMouseEnter={(e) => {
                                       e.currentTarget.nextElementSibling?.classList.add(
                                         "opacity-50",
@@ -454,7 +482,7 @@ const Hero = () => {
                                     className="hover:opacity-100"
                                     style={{ cursor: "pointer" }}
                                     onClick={() =>
-                                      voteProgram(player.id, false)
+                                      voteProgram(player.id, false, player.name)
                                     }
                                     onMouseEnter={(e) => {
                                       e.currentTarget.previousElementSibling?.classList.add(
@@ -494,7 +522,9 @@ const Hero = () => {
                             <div className="flex justify-center">
                               <button
                                 style={{ cursor: "pointer" }}
-                                onClick={() => deleteVote(player.id)}
+                                onClick={() =>
+                                  deleteVote(player.id, player.name)
+                                }
                               >
                                 <Image
                                   src="/images/icon/edit.png"

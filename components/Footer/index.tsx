@@ -5,10 +5,18 @@ import Image from "next/image";
 const Footer = () => {
   return (
     <>
-      <footer className="border-t border-stroke bg-white dark:border-strokedark dark:bg-blacksection">
-        <div className="mx-auto max-w-c-1390 px-4 md:px-8 2xl:px-0">
-          {/* <!-- Footer Top --> */}
-          <div className="py-20 lg:py-25">
+      <footer className="">
+{/*         <div className="relative h-400">
+          <Image
+            className="h-400 w-full rounded-md object-cover grayscale-100"
+            src="/images/footer/palya.png"
+            alt="palya"
+            fill
+          />
+          <div className="absolute inset-0 rounded-md bg-gradient-to-b from-black to-blacksection opacity-90"></div>
+        </div> */}
+
+        {/*           <div className="py-20 lg:py-25">
             <div className="flex flex-wrap gap-8 lg:justify-between lg:gap-0">
               <motion.div
                 variants={{
@@ -241,9 +249,6 @@ const Footer = () => {
               </div>
             </div>
           </div>
-          {/* <!-- Footer Top --> */}
-
-          {/* <!-- Footer Bottom --> */}
           <div className="flex flex-col flex-wrap items-center justify-center gap-5 border-t border-stroke py-7 dark:border-strokedark lg:flex-row lg:justify-between lg:gap-0">
             <motion.div
               variants={{
@@ -419,8 +424,7 @@ const Footer = () => {
               </ul>
             </motion.div>
           </div>
-          {/* <!-- Footer Bottom --> */}
-        </div>
+      */}
       </footer>
     </>
   );

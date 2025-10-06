@@ -1,7 +1,6 @@
 import { Metadata } from "next";
 import Hero from "@/components/Hero";
 import Brands from "@/components/Brands";
-import Feature from "@/components/Features";
 import About from "@/components/About";
 import FeaturesTab from "@/components/FeaturesTab";
 import FunFact from "@/components/FunFact";
@@ -13,6 +12,7 @@ import Contact from "@/components/Contact";
 import Blog from "@/components/Blog";
 import Testimonial from "@/components/Testimonial";
 import Matches from "@/components/Matches";
+import Players from "@/components/Players";
 
 export const metadata: Metadata = {
   title: "Tóték - 2025 - Ősz",
@@ -25,9 +25,9 @@ export default function Home() {
   return (
     <main>
       <Hero />
-      <Brands />
+{/*       <Brands />
       <Matches />
-      <Feature />
+      <Players /> */}
 {/*       <About />
       <FeaturesTab />
       <FunFact />

@@ -2,7 +2,6 @@ import { formatDate } from "@/utils/date/format";
 import { abbreviateTeamName } from "@/utils/team/Abbreviate";
 
 export default function LatestResults1({ matches }) {
-
   return (
     <div className="mx-auto w-full px-5">
       <div className="bg-blacksection rounded-2xl px-8 py-7 shadow-2xl">

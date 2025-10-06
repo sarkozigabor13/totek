@@ -1,6 +1,26 @@
-export type Feature = {
-  id: number;
-  icon: string;
-  title: string;
-  description: string;
+export type Player = {
+  name: string;
+  img: string;
+  stats: [
+    {
+      label: string;
+      value: number;
+    },
+    {
+      label: string;
+      value: number;
+    },
+    {
+      label: string;
+      value: number;
+    },
+    {
+      label: string;
+      value: number;
+    },
+    {
+      label: string;
+      value: number;
+    },
+  ];
 };
