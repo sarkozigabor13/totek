@@ -3,6 +3,7 @@ const players = [
     name: "Csonka Ádám",
     img: "/images/team/adam.png",
     position: "Védő",
+    id: 3,
     stats: [
       { label: "Mérkőzés", value: 17 },
       { label: "Győzelem", value: 9 },
@@ -20,8 +21,9 @@ const players = [
   },
   {
     name: "Vértesaljai Ágoston",
-    img: "/images/team/agoston-transparent.png",
+    img: "/images/team/agoston-transparent01.png",
     position: "Játékos-edző",
+    id: 4,
     stats: [
       { label: "Mérkőzés", value: 17 },
       { label: "Győzelem", value: 9 },
@@ -41,6 +43,7 @@ const players = [
     name: "Molnár Bálint",
     img: "/images/team/balint.png",
     position: "Csatár",
+    id: 5,
     stats: [
       { label: "Mérkőzés", value: 17 },
       { label: "Győzelem", value: 9 },
@@ -60,6 +63,7 @@ const players = [
     name: "Takács Bence",
     img: "/images/team/bence-transparent.png",
     position: "Középpályás",
+    id: 9,
     stats: [
       { label: "Mérkőzés", value: 17 },
       { label: "Győzelem", value: 9 },
@@ -79,6 +83,7 @@ const players = [
     name: "Bognár Gyula",
     img: "/images/team/gyula-transparent.png",
     position: "Középpályás",
+    id: 6,
     stats: [
       { label: "Mérkőzés", value: 17 },
       { label: "Győzelem", value: 9 },
@@ -98,6 +103,7 @@ const players = [
     name: "Tóth János",
     img: "/images/team/jancsi-transparent.png",
     position: "Csatár",
+    id: 2,
     stats: [
       { label: "Mérkőzés", value: 17 },
       { label: "Győzelem", value: 9 },
@@ -115,8 +121,9 @@ const players = [
   },
   {
     name: "Juronits Krisztián",
-    img: "/images/team/juro-transparent.png",
+    img: "/images/team/juro-transparent01.png",
     position: "Kapus",
+    id: 8,
     stats: [
       { label: "Mérkőzés", value: 17 },
       { label: "Győzelem", value: 9 },
@@ -136,6 +143,7 @@ const players = [
     name: "Kiss Levente",
     img: "/images/team/levi.png",
     position: "Középpályás",
+    id: 7,
     stats: [
       { label: "Mérkőzés", value: 17 },
       { label: "Győzelem", value: 9 },
@@ -155,6 +163,7 @@ const players = [
     name: "Sárközi Gábor",
     img: "/images/team/gabi-transparent.png",
     position: "Középpályás",
+    id: 1,
     stats: [
       { label: "Mérkőzés", value: 17 },
       { label: "Győzelem", value: 9 },
@@ -172,4 +181,4 @@ const players = [
   },
 ];
 
-export default players
+export default players;

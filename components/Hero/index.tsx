@@ -10,6 +10,8 @@ import { getWeatherForMatch } from "@/utils/weather/forecast";
 import { getWeatherDescription } from "@/utils/weather/codes";
 import { StatusBar } from "./StatusBar";
 import toast from "react-hot-toast";
+import playersData from "../Players/playersData";
+
 
 type Match = {
   id: string;
@@ -277,14 +279,15 @@ const Hero = () => {
                 viewport={{ once: true }}
                 className="animate_top text-left"
               >
-                <h1 className="mb-5 text-center md:text-left text-5xl font-bold text-black md:pr-16 dark:text-white">
+                <h1 className="mb-5 text-center text-5xl font-bold text-black md:pr-16 md:text-left dark:text-white">
                   <span className="hidden md:inline-flex">🔥</span>{" "}
                   <span className="md:hidden">🔥</span> TótÉk{" "}
                   <span className="md:hidden">🔥</span>{" "}
-                  <span className="md:inline-flex hidden">&nbsp;</span>{" "}
+                  <span className="hidden md:inline-flex">&nbsp;</span>{" "}
                   <br className="md:hidden" /> x <br className="md:hidden" />{" "}
-                  <span className="md:inline-flex hidden">&nbsp;</span>{" "}
-                  {match?.opponent} <span className="hidden md:inline-flex">🔥</span>
+                  <span className="hidden md:inline-flex">&nbsp;</span>{" "}
+                  {match?.opponent}{" "}
+                  <span className="hidden md:inline-flex">🔥</span>
                 </h1>
               </motion.div>
               <motion.div
@@ -440,7 +443,25 @@ const Hero = () => {
                             scope="row"
                             className="w-full px-6 py-4 font-medium whitespace-nowrap text-white"
                           >
-                            {player.name}
+                            {(() => {
+                             const found = playersData.find(
+                              (p) => String(p.id) === String(player.id)
+                            );
+                              return (
+                                <div className="flex items-center gap-3">
+                                  {found?.img && (
+                                    <Image
+                                      src={found.img}
+                                      alt={found.name}
+                                      width={32}
+                                      height={32}
+                                      className="rounded-full"
+                                    />
+                                  )}
+                                  <span>{player.name}</span>
+                                </div>
+                              );
+                            })()}
                           </th>
                           <td className="px-6 py-4 whitespace-nowrap">
                             <div className="flex justify-center gap-2">

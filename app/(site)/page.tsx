@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import Hero from "@/components/Hero";
 import Brands from "@/components/Brands";
-import About from "@/components/About";
+import Standing from "@/components/Standing";
 import FeaturesTab from "@/components/FeaturesTab";
 import FunFact from "@/components/FunFact";
 import Integration from "@/components/Integration";
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   title: "Tóték - 2025 - Ősz",
 
   // other metadata
-  description: "A Tóték focicsapat hivatalos management oldala"
+  description: "A Tóték focicsapat hivatalos management oldala",
 };
 
 export default function Home() {
@@ -27,9 +27,9 @@ export default function Home() {
       <Hero />
       <Brands />
       <Matches />
-{/*       <Players />  */}
-{/*       <About />
-      <FeaturesTab />
+      <Standing />
+{/*       <Players /> */}
+      {/*   <FeaturesTab />
       <FunFact />
       <Integration />
       <CTA />
@@ -37,7 +37,7 @@ export default function Home() {
       <Testimonial />
       <Pricing />
       <Contact />
-      <Blog /> */}
+      <Blog />  */}
     </main>
   );
 }

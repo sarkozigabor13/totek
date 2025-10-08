@@ -93,7 +93,7 @@ const Header = () => {
         <div
           className={`invisible h-0 w-full items-center justify-between justify-end xl:visible xl:flex xl:h-auto xl:w-full ${
             navigationOpen &&
-            "navbar shadow-solid-5 dark:bg-blacksection visible! mt-4 h-auto max-h-[400px] rounded-md bg-white p-7.5 xl:h-auto xl:p-0 xl:shadow-none xl:dark:bg-transparent"
+            "navbar shadow-solid-5 dark:bg-blacksection visible! h-auto max-h-[400px] rounded-md bg-white p-7.5 xl:h-auto xl:p-0 xl:shadow-none xl:dark:bg-transparent"
           }`}
         >
           <nav>

@@ -15,11 +15,16 @@ type StatusBarProps = {
 };
 
 const StatusBar = ({ players, attendance }: StatusBarProps) => {
-  const totalPlayers = players.length;
+  // Szűrt lista — Ágoston kikerül a játékosok statjából
+  const filteredPlayers = players.filter(
+    (p) => p.name.toLowerCase() !== "vértesaljai ágoston"
+  );
 
-  // Meccsre voksolás
-  const votedMatchCount = Object.values(attendance).filter(
-    (a) => a.attendingMatch === true,
+  // --- MECCS rész ---
+  const totalPlayers = filteredPlayers.length;
+
+  const votedMatchCount = filteredPlayers.filter(
+    (p) => attendance[p.id]?.attendingMatch === true
   ).length;
 
   let matchStatusMessage = "";
@@ -40,14 +45,15 @@ const StatusBar = ({ players, attendance }: StatusBarProps) => {
 
   const matchProgress = Math.min((votedMatchCount / totalPlayers) * 100, 100);
 
+  // --- KÖZÖS PROGRAM rész ---
+  // ide Ágoston is beleszámít!
+  const totalProgramPlayers = players.length;
 
-  // Közös program
-  const votedProgramCount = Object.values(attendance).filter(
-    (a) => a.attendingProgram === true,
+  const votedProgramCount = players.filter(
+    (p) => attendance[p.id]?.attendingProgram === true
   ).length;
 
   let programStatusMessage = "";
-
 
   if (votedProgramCount < 3) {
     programStatusMessage = `Alakul a dolog 🍷`;
@@ -58,13 +64,13 @@ const StatusBar = ({ players, attendance }: StatusBarProps) => {
   }
 
   const programProgress = Math.min(
-    (votedProgramCount / totalPlayers) * 100,
-    100,
+    (votedProgramCount / totalProgramPlayers) * 100,
+    100
   );
 
   return (
     <div className="flex flex-col gap-6">
-      {/* Meccs rész */}
+      {/* --- Meccs rész --- */}
       <div className="flex flex-col gap-2">
         <div className="flex justify-between flex-col lg:flex-row gap-2">
           <p>
@@ -106,15 +112,15 @@ const StatusBar = ({ players, attendance }: StatusBarProps) => {
         </div>
       </div>
 
-      {/* Közös program rész */}
+      {/* --- Közös program rész --- */}
       <div className="flex flex-col gap-2">
-      <div className="flex justify-between flex-col lg:flex-row gap-2">
+        <div className="flex justify-between flex-col lg:flex-row gap-2">
           <p>
-            <b>Közös program</b> {votedProgramCount}/{totalPlayers}
+            <b>Közös program</b> {votedProgramCount}/{totalProgramPlayers}
           </p>
           <div className="text-right">
             <div
-              className={`dark:bg-blacksection mb-2 lg:mb-4 flex items-center rounded-lg p-2.5 text-sm`}
+              className="dark:bg-blacksection mb-2 lg:mb-4 flex items-center rounded-lg p-2.5 text-sm"
               role="alert"
             >
               <span>{programStatusMessage}</span>
