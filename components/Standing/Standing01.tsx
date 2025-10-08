@@ -62,7 +62,7 @@ export default function Standings1({standings}: {standings:any}) {
       className="animate_left relative mx-auto w-full lg:w-2/3"
     >
       <div className="mx-auto w-full max-w-4xl">
-        <div className="rounded-3xl bg-black px-6 py-5">
+        <div className="rounded-3xl bg-black lg:px-6 py-5">
           <div className="mb-4 px-2">
             <h4 className="text-custom-gray-900 text-lg font-bold dark:text-white">
               Kedd D liga - Lágymányosi Bajnokság
