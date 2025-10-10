@@ -1,5 +1,4 @@
 import React from "react";
-import Image from "next/image";
 import { motion } from "framer-motion";
 import PlayerRating from "./PlayerRating";
 
@@ -23,13 +22,13 @@ const SinglePlayer = ({ player, delay }: { player: any, delay: any }) => {
         }}
         initial="hidden"
         whileInView="visible"
-        transition={{ duration: 0.5, delay: delay * 0.3 }}
+        transition={{ duration: 0.5 }}
         viewport={{ once: true }}
         className="animate_top shadow-solid-3 hover:shadow-solid-4 z-40 transition-all"
       >
         <div className="mx-auto">
           <div className="bg-blacksection border-custom-gray-200 bg-custom-gray-100 dark:border-custom-gray-600 dark:bg-custom-gray-700 rounded-3xl border">
-            <div className="ring-custom-gray-200 dark:bg-custom-gray-800 dark:ring-custom-gray-600 rounded-3xl py-4 ring-1">
+            <div className="ring-custom-gray-200 dark:bg-custom-gray-800 dark:ring-custom-gray-600 rounded-3xl pt-4">
               <div className="relative overflow-hidden pb-3">
                 <div className="overflow-hidden [filter:url('#rounded')]">
                   <div className="from-custom-orange to-custom-yellow relative h-[400px] bg-linear-to-b [clip-path:polygon(0_0,_100%_0,_100%_95%,_50%_100%,_0_95%)]">
@@ -53,8 +52,8 @@ const SinglePlayer = ({ player, delay }: { player: any, delay: any }) => {
                 <div className="text-sm">{position}</div>
               </div>
             </div>
-            <div className="mx-auto w-fit py-5 text-slate-800 dark:text-white">
-              <div className="divide-custom-gray-200 dark:divide-custom-gray-600 grid grid-cols-3 divide-x">
+            <div className="mx-auto w-fit py-5 text-slate-800 dark:text-white px-2">
+              <div className="divide-custom-gray-200 dark:divide-custom-gray-600 grid grid-cols-3 divide-x border-y py-2">
                 {stats.slice(0, 3).map((statistic) => (
                   <div key={statistic.label} className="px-7 text-center">
                     <div className="mb-2 text-sm/tight font-bold">
@@ -68,8 +67,8 @@ const SinglePlayer = ({ player, delay }: { player: any, delay: any }) => {
               </div>
 
               {/* második sor - 2 elem középen, elválasztóval */}
-              <div className="divide-custom-gray-200 dark:divide-custom-gray-600 mx-auto mt-5 grid w-fit grid-cols-2 justify-center divide-x">
-                {stats.slice(3, 5).map((statistic) => (
+              <div className="divide-custom-gray-200 dark:divide-custom-gray-600 grid grid-cols-3 divide-x py-2 border-b">
+                {stats.slice(3, 6).map((statistic) => (
                   <div key={statistic.label} className="px-7 text-center">
                     <div className="mb-2 text-sm/tight font-bold">
                       {statistic.value}

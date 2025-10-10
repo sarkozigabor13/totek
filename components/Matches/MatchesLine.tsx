@@ -25,7 +25,7 @@ export default function LatestResults1({ matches }) {
             }}
             initial="hidden"
             whileInView="visible"
-            transition={{ duration: 0.5, delay: ix * 0.1 }}
+            transition={{ duration: 0.5}}
             viewport={{ once: true }}
             className="animate_top transition-all"
           >

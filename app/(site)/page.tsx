@@ -13,6 +13,7 @@ import Blog from "@/components/Blog";
 import Testimonial from "@/components/Testimonial";
 import Matches from "@/components/Matches";
 import Players from "@/components/Players";
+import HighlihtComponent from "@/components/Highlight";
 
 export const metadata: Metadata = {
   title: "Tóték - 2025 - Ősz",
@@ -28,7 +29,7 @@ export default function Home() {
       <Brands />
       <Matches />
       <Standing />
-{/*       <Players /> */}
+      <Players />
       {/*   <FeaturesTab />
       <FunFact />
       <Integration />
@@ -37,7 +38,8 @@ export default function Home() {
       <Testimonial />
       <Pricing />
       <Contact />
-      <Blog />  */}
+    <Blog />  */}
+      <HighlihtComponent />
     </main>
   );
 }

@@ -23,7 +23,7 @@ const menuData: Menu[] = [
     id: 2.3,
     title: "Játékos statok",
     newTab: false,
-    path: "/#features",
+    path: "/#players",
   },
  /* {
     id: 3,

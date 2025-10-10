@@ -106,7 +106,7 @@ export default function Standings1({standings}: {standings:any}) {
                   return (
                     <tr
                       key={team.rank}
-                      className={`${i !== sortedStandings.length - 1 ? "border-b" : ""} border-gray-500 ${
+                      className={`${i !== sortedStandings.length - 1 ? "border-b" : ""} border-gray-500 hover:bg-blacksection ${
                         isMyTeam
                           ? "border-none bg-yellow-600 font-bold text-black shadow-2xl"
                           : ""
