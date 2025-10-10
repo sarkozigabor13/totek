@@ -37,12 +37,12 @@ const players = [
 
     ],
     skills: [
-      { label: "Támadás", value: 4 },
-      { label: "Védekezés", value: 4 },
-      { label: "Gyorsaság", value: 4 },
-      { label: "Passzolás", value: 4 },
-      { label: "Cselezés", value: 4 },
-      { label: "Állóképesség", value: 4 },
+      { label: "Taktikai felkészültség", value: 3 },
+      { label: "Motiváció menedzsment", value: 5 },
+      { label: "Krízismenedzsment", value: 4 },
+      { label: "Keretkezelési diplomácia", value: 3 },
+      { label: "Öltözőpszichológia", value: 5 },
+      { label: "Filozófia", value: 5 },
     ],
   },
   {

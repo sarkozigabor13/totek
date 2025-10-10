@@ -5,7 +5,6 @@ import SectionHeader from "../Common/SectionHeader";
 import playersData from "./playersData";
 import { supabase } from "@/utils/supbase/client";
 
-
 type PlayerStat = {
   matchesPlayed: number;
   wins: number;
@@ -22,37 +21,39 @@ const Players = () => {
   useEffect(() => {
     const fetchPlayersStats = async () => {
       setLoading(true);
-  
+
       const today = new Date().toISOString().split("T")[0];
-  
+
       // Attendance lekérdezés (csak múltbeli meccsek)
       const { data: attendance, error: attError } = await supabase
         .from("match_attendance")
-        .select(`
+        .select(
+          `
           player_id,
           attending_match,
           matches!inner(id, wld, date)
-        `)
+        `,
+        )
         .eq("attending_match", true)
         .lt("matches.date", today);
-  
+
       if (attError) {
         console.error(attError);
         setLoading(false);
         return;
       }
-  
+
       // Goals lekérdezés
       const { data: goals, error: goalsError } = await supabase
         .from("goals")
         .select("scorer_id, assist_id");
-  
+
       if (goalsError) {
         console.error(goalsError);
         setLoading(false);
         return;
       }
-  
+
       // Player stat map inicializálása minden playerhez
       const playerStatsMap: Record<number, PlayerStat> = {};
       playersData.forEach((player) => {
@@ -65,26 +66,26 @@ const Players = () => {
           assists: 0,
         };
       });
-  
+
       // Attendance feldolgozása
       attendance?.forEach((row) => {
         const playerId = row.player_id;
         if (!row.attending_match || !row.matches) return;
-  
+
         playerStatsMap[playerId].matchesPlayed += 1;
-  
+
         const match = row.matches as unknown as {
           id: number;
           wld: "win" | "draw" | "lose";
           date: string;
         };
-  
+
         const wld = match.wld;
         if (wld === "win") playerStatsMap[playerId].wins += 1;
         else if (wld === "lose") playerStatsMap[playerId].losses += 1;
         else if (wld === "draw") playerStatsMap[playerId].draws += 1;
       });
-  
+
       // Goals feldolgozása
       goals?.forEach((goal) => {
         if (goal.scorer_id && playerStatsMap[goal.scorer_id]) {
@@ -94,12 +95,15 @@ const Players = () => {
           playerStatsMap[goal.assist_id].assists += 1;
         }
       });
-  
+
       // Összekapcsolás playersData-val
       const playersWithStats = playersData.map((player) => ({
         ...player,
         stats: [
-          { label: "Mérkőzés", value: playerStatsMap[player.id]?.matchesPlayed || 0 },
+          {
+            label: "Mérkőzés",
+            value: playerStatsMap[player.id]?.matchesPlayed || 0,
+          },
           { label: "Győzelem", value: playerStatsMap[player.id]?.wins || 0 },
           { label: "Döntetlen", value: playerStatsMap[player.id]?.draws || 0 },
           { label: "Vereség", value: playerStatsMap[player.id]?.losses || 0 },
@@ -107,20 +111,19 @@ const Players = () => {
           { label: "Gólpassz", value: playerStatsMap[player.id]?.assists || 0 },
         ],
       }));
-  
+
       setPlayers(playersWithStats);
       setLoading(false);
     };
-  
+
     fetchPlayersStats();
   }, []);
-  
 
   if (loading) return <p className="text-center text-white">Betöltés...</p>;
 
   return (
     <section id="players" className="py-20 lg:py-25 xl:py-30">
-      <div className="max-w-c-1315 mx-auto px-4 md:px-8 xl:px-0"> 
+      <div className="max-w-c-1315 mx-auto px-4 md:px-8 xl:px-0">
         <SectionHeader
           headerInfo={{
             title: "TótÉk kerettagoke",
@@ -131,7 +134,7 @@ const Players = () => {
 
         <div className="mt-12.5 grid grid-cols-1 gap-7.5 md:grid-cols-2 lg:mt-15 lg:grid-cols-3 xl:mt-20 xl:gap-12.5">
           {players?.map((player, key) => (
-            <SingleFeature player={player} delay={key} key={key} />
+            <SingleFeature player={player} key={key} />
           ))}
         </div>
       </div>
