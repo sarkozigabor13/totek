@@ -14,11 +14,11 @@ const players = [
 
     ],
     skills: [
-      { label: "Támadás", value: 4 },
+      { label: "Támadás", value: 2 },
       { label: "Védekezés", value: 4 },
-      { label: "Gyorsaság", value: 4 },
-      { label: "Passzolás", value: 4 },
-      { label: "Cselezés", value: 4 },
+      { label: "Gyorsaság", value: 2 },
+      { label: "Passzolás", value: 3 },
+      { label: "Cselezés", value: 2 },
       { label: "Állóképesség", value: 4 },
     ],
   },
@@ -60,12 +60,12 @@ const players = [
 
     ],
     skills: [
-      { label: "Támadás", value: 5 },
-      { label: "Védekezés", value: 4 },
-      { label: "Gyorsaság", value: 4 },
-      { label: "Passzolás", value: 5 },
-      { label: "Cselezés", value: 5 },
-      { label: "Állóképesség", value: 4 },
+      { label: "Támadás", value: 4 },
+      { label: "Védekezés", value: 3 },
+      { label: "Gyorsaság", value: 3 },
+      { label: "Passzolás", value: 4 },
+      { label: "Cselezés", value: 2 },
+      { label: "Állóképesség", value: 3 },
     ],
   },
   {
@@ -83,12 +83,12 @@ const players = [
 
     ],
     skills: [
-      { label: "Támadás", value: 5 },
-      { label: "Védekezés", value: 4 },
+      { label: "Támadás", value: 4 },
+      { label: "Védekezés", value: 3 },
       { label: "Gyorsaság", value: 4 },
       { label: "Passzolás", value: 5 },
-      { label: "Cselezés", value: 5 },
-      { label: "Állóképesség", value: 4 },
+      { label: "Cselezés", value: 2 },
+      { label: "Állóképesség", value: 5 },
     ],
   },
   {
@@ -129,12 +129,12 @@ const players = [
 
     ],
     skills: [
-      { label: "Támadás", value: 5 },
-      { label: "Védekezés", value: 4 },
+      { label: "Támadás", value: 4 },
+      { label: "Védekezés", value: 3 },
       { label: "Gyorsaság", value: 4 },
-      { label: "Passzolás", value: 5 },
-      { label: "Cselezés", value: 5 },
-      { label: "Állóképesség", value: 4 },
+      { label: "Passzolás", value: 3 },
+      { label: "Cselezés", value: 2 },
+      { label: "Állóképesség", value: 2 },
     ],
   },
   {
