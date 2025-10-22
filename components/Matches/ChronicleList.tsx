@@ -73,7 +73,7 @@ export default function ChronicleList({ matchId }: { matchId: string }) {
   if (chronicles.length === 0)
     return (
       <div
-        className="dark:bg-blacksection mb-2 flex items-center rounded-lg bg-red-50 p-2.5 text-sm text-red-800 lg:mb-4 dark:text-red-400"
+        className="dark:bg-blacksection mb-2 flex items-center rounded-lg bg-red-50 p-2.5 text-lg text-red-800 lg:mb-4 dark:text-red-400"
         role="alert"
       >
         <svg
@@ -106,14 +106,14 @@ export default function ChronicleList({ matchId }: { matchId: string }) {
           />
           <div>
             <div className="flex items-center gap-2">
-              <span className="text-primary font-semibold">
+              <span className="text-primary font-semibold text-lg">
                 {chronicle.player_name}
               </span>
-              <span className="text-xs text-gray-500">
+              <span className="text-lg text-gray-500">
                 {new Date(chronicle.created_at).toLocaleString("hu-HU")}
               </span>
             </div>
-            <p className="mt-1 text-sm text-white">{chronicle.comment}</p>
+            <p className="mt-1 text-md text-white">{chronicle.comment}</p>
           </div>
         </div>
       ))}

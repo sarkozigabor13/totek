@@ -25,7 +25,7 @@ const PlayerRating = ({ skill, value }: PlayerRatingProps) => {
 
   return (
     <div className="flex flex-row gap-4 items-center text-center px-7 justify-between">
-      <div className="text-sm font-semibold mb-1">{skill}</div>
+      <div className="text-lg font-semibold mb-1">{skill}</div>
       <div className="flex gap-1">{stars}</div>
     </div>
   );

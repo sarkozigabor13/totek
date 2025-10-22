@@ -39,7 +39,7 @@ export default function GoalsStatsPanel({ stats }: GoalsStatsPanelProps) {
       {/* --- MAGYARÁZAT --- */}
       <div className="mb-6">
         <h5 className="mb-2 font-bold text-blue-400">Táblázat magyarázat</h5>
-        <ul className="list-inside list-disc text-sm">
+        <ul className="list-inside list-disc text-md">
           <li>
             <span className="font-bold">Gól:</span> hányszor talált be az
             adott játékos
@@ -72,7 +72,7 @@ export default function GoalsStatsPanel({ stats }: GoalsStatsPanelProps) {
         <h5 className="mb-2 font-bold text-green-400">
           Kiemelkedő teljesítmények
         </h5>
-        <ul className="list-inside list-disc text-sm">
+        <ul className="list-inside list-disc text-md">
           <li>
             <span className="font-semibold">Legtöbb gólt szerző:</span>{" "}
             {topScorer.name} ({topScorer.goals} gól)

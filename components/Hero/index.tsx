@@ -279,7 +279,7 @@ const Hero = () => {
                 viewport={{ once: true }}
                 className="animate_top text-left"
               >
-                <h1 className="mb-5 text-center text-5xl font-bold text-black md:pr-16 md:text-left dark:text-white">
+                <h1 className="mb-5 text-center text-6xl font-bold text-black md:pr-16 md:text-left dark:text-white">
                   <span className="hidden md:inline-flex">🔥</span>{" "}
                   <span className="md:hidden">🔥</span> TótÉk{" "}
                   <span className="md:hidden">🔥</span>{" "}
@@ -306,7 +306,7 @@ const Hero = () => {
                 whileInView="visible"
                 transition={{ duration: 1, delay: 0.7 }}
                 viewport={{ once: true }}
-                className="animate_top text-left"
+                className="animate_top text-left text-2xl"
               >
                 {" "}
                 <p>
@@ -332,7 +332,7 @@ const Hero = () => {
                 whileInView="visible"
                 transition={{ duration: 1, delay: 1.0 }}
                 viewport={{ once: true }}
-                className="animate_top text-left"
+                className="animate_top text-left text-2xl"
               >
                 <p>
                   <b>Helyszín:</b> {match?.location}
@@ -355,7 +355,7 @@ const Hero = () => {
                 whileInView="visible"
                 transition={{ duration: 1, delay: 1.3 }}
                 viewport={{ once: true }}
-                className="animate_top text-left"
+                className="animate_top text-left text-2xl"
               >
                 {" "}
                 <p>
@@ -381,7 +381,7 @@ const Hero = () => {
                   whileInView="visible"
                   transition={{ duration: 1, delay: 1.6 }}
                   viewport={{ once: true }}
-                  className="animate_top text-left"
+                  className="animate_top text-left text-2xl"
                 >
                   <StatusBar players={players || []} attendance={attendance} />
                 </motion.div>
@@ -408,8 +408,8 @@ const Hero = () => {
                 className="animate_top text-left"
               >
                 <div className="relative overflow-x-auto rounded-lg shadow-2xl">
-                  <table className="w-full text-left text-sm text-gray-400">
-                    <thead className="bg-blacksection text-xs text-white uppercase">
+                  <table className="w-full text-left text-lg text-gray-400">
+                    <thead className="bg-blacksection text-md text-white uppercase">
                       <tr>
                         <th scope="col" className="w-full px-6 py-3">
                           Játékos

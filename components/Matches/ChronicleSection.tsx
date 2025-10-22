@@ -52,7 +52,7 @@ const handleSubmit = async (e: React.FormEvent) => {
       <button
         onClick={() => setIsModalOpen(true)}
         style={{ cursor: "pointer" }}
-        className="bg-primary inline-flex w-full items-center justify-center rounded-lg px-4 py-2.5 text-center text-sm font-medium text-black shadow-2xl"
+        className="bg-primary inline-flex w-full items-center justify-center rounded-lg px-4 py-2.5 text-center text-lg font-medium text-black shadow-2xl"
       >
         Krónika hozzáadása
       </button>
@@ -78,7 +78,7 @@ const handleSubmit = async (e: React.FormEvent) => {
             <div className="flex items-center justify-between rounded-lg px-3 py-2">
               <button
                 type="submit"
-                className="bg-primary inline-flex items-center rounded-lg px-4 py-2.5 text-center text-sm font-medium text-black shadow-2xl"
+                className="bg-primary inline-flex items-center rounded-lg px-4 py-2.5 text-center text-lg font-medium text-black shadow-2xl"
               >
                 Kommentelés
               </button>
@@ -128,7 +128,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                           height={40}
                           className="rounded-full"
                         />
-                        <span className="text-center text-xs text-white">
+                        <span className="text-center text-lg text-white">
                           {player.name}
                         </span>
                       </button>

@@ -75,7 +75,7 @@ export default function StatsPanelAdvanced({ standings }: StatsPanelProps) {
       {/* --- LIGA STATISZTIKÁK --- */}
       <div className="mb-6">
         <h5 className="mb-2 font-bold text-blue-400">Liga Érdekességek</h5>
-        <ul className="list-inside list-disc text-sm">
+        <ul className="list-inside list-disc text-lg">
           <li>
             A liga legjobb győzelmi aránya:{" "}
             {Math.round((topWinRatioTeam.won / topWinRatioTeam.played) * 100)}%{" "}
@@ -105,7 +105,7 @@ export default function StatsPanelAdvanced({ standings }: StatsPanelProps) {
             <h5 className="mb-2 font-bold text-yellow-400">
               TótÉk Statisztika
             </h5>
-            <ul className="list-inside list-disc text-sm">
+            <ul className="list-inside list-disc text-md">
               <li>
                 Helyezés és pontszám: jelenleg a {myTeam.team} a {myTeam.rank}.
                 helyen, {myTeam.points} ponttal
@@ -131,7 +131,7 @@ export default function StatsPanelAdvanced({ standings }: StatsPanelProps) {
             <h5 className="mb-2 font-bold text-green-400">
               Összehasonlítás más csapatokkal
             </h5>
-            <ul className="list-inside list-disc text-sm">
+            <ul className="list-inside list-disc text-md">
               {prevTeam && (
                 <>
                   <li>

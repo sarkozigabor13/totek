@@ -5,10 +5,10 @@ import Header from "@/components/Header";
 import Lines from "@/components/Lines";
 import ScrollToTop from "@/components/ScrollToTop";
 import { ThemeProvider } from "next-themes";
-import { Inter, Pixelify_Sans } from "next/font/google";
+import { Inter, Jersey_10 } from "next/font/google";
 import "../globals.css";
 const inter = Inter({ subsets: ["latin"] });
-const pixel = Pixelify_Sans({ subsets: ["latin"] });
+const pixel = Jersey_10({ subsets: ["latin"], weight: "400" });
 
 import ToasterContext from "../context/ToastContext";
 
@@ -24,6 +24,7 @@ export default function RootLayout({
           enableSystem={false}
           attribute="class"
           defaultTheme="dark"
+          forcedTheme="dark"
         >
           <Lines />
           <Header />

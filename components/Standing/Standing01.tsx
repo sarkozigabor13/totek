@@ -88,7 +88,7 @@ export default function Standings1({standings}: {standings:any}) {
                   ).map(([key, label]) => (
                     <th
                       key={key}
-                      className="cursor-pointer px-3 py-2 text-center select-none"
+                      className="cursor-pointer px-3 py-2 text-center select-none text-md"
                       onClick={() => requestSort(key)}
                     >
                       <div
@@ -106,7 +106,7 @@ export default function Standings1({standings}: {standings:any}) {
                   return (
                     <tr
                       key={team.rank}
-                      className={`${i !== sortedStandings.length - 1 ? "border-b" : ""} border-gray-500 hover:bg-blacksection ${
+                      className={`${i !== sortedStandings.length - 1 ? "border-b" : ""} text-lg border-gray-500 hover:bg-blacksection ${
                         isMyTeam
                           ? "border-none bg-yellow-600 font-bold text-black shadow-2xl"
                           : ""

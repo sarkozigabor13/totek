@@ -37,7 +37,7 @@ const Header = () => {
         <div className="flex w-full items-center justify-between xl:w-1/4">
           <a
             href="/#hero"
-            className="text-primary flex items-center justify-between gap-4 text-3xl"
+            className="text-primary flex items-center justify-between gap-4 text-4xl"
           >
             <Image
               src="/images/logo/logo-light.svg"
@@ -104,7 +104,7 @@ const Header = () => {
                     <>
                       <button
                         onClick={() => setDropdownToggler(!dropdownToggler)}
-                        className="hover:text-primary flex cursor-pointer items-center justify-between gap-3"
+                        className="hover:text-primary flex cursor-pointer items-center justify-between gap-3 text-2xl"
                       >
                         {menuItem.title}
                         <span>
@@ -124,7 +124,7 @@ const Header = () => {
                         {menuItem.submenu.map((item, key) => (
                           <li
                             key={key}
-                            className="hover:text-primary active:text-primary"
+                            className="hover:text-primary active:text-primary text-2xl"
                           >
                             <Link href={item.path || "#"}>{item.title}</Link>
                           </li>
@@ -137,8 +137,8 @@ const Header = () => {
                       onClick={() => setNavigationOpen(!navigationOpen)}
                       className={
                         pathUrl === menuItem.path
-                          ? "text-primary hover:text-primary"
-                          : "hover:text-primary"
+                          ? "text-primary hover:text-primary text-xl"
+                          : "hover:text-primary text-xl"
                       }
                     >
                       {menuItem.title}

@@ -72,13 +72,13 @@ const StatusBar = ({ players, attendance }: StatusBarProps) => {
     <div className="flex flex-col gap-6">
       {/* --- Meccs rész --- */}
       <div className="flex flex-col gap-2">
-        <div className="flex justify-between flex-col lg:flex-row gap-2">
+        <div className="flex justify-between flex-col lg:flex-row gap-2 text-2xl">
           <p>
             <b>Játékosok száma:</b> {votedMatchCount}/{totalPlayers}
           </p>
           <div className="text-right">
             <div
-              className={`dark:bg-blacksection mb-2 lg:mb-4 flex items-center rounded-lg p-2.5 text-sm ${
+              className={`dark:bg-blacksection mb-2 lg:mb-4 flex items-center rounded-lg p-2.5 text-lg ${
                 matchStatusType === "red"
                   ? "bg-red-50 text-red-800 dark:text-red-400"
                   : matchStatusType === "yellow"
@@ -114,13 +114,13 @@ const StatusBar = ({ players, attendance }: StatusBarProps) => {
 
       {/* --- Közös program rész --- */}
       <div className="flex flex-col gap-2">
-        <div className="flex justify-between flex-col lg:flex-row gap-2">
+        <div className="flex justify-between flex-col lg:flex-row gap-2 ">
           <p>
             <b>Közös program</b> {votedProgramCount}/{totalProgramPlayers}
           </p>
           <div className="text-right">
             <div
-              className="dark:bg-blacksection mb-2 lg:mb-4 flex items-center rounded-lg p-2.5 text-sm"
+              className="dark:bg-blacksection mb-2 lg:mb-4 flex items-center rounded-lg p-2.5 text-lg"
               role="alert"
             >
               <span>{programStatusMessage}</span>
@@ -130,7 +130,7 @@ const StatusBar = ({ players, attendance }: StatusBarProps) => {
 
         <div className="bg-blacksection h-3 w-full overflow-hidden rounded-full">
           <motion.div
-            className="bg-primary h-3 rounded-full"
+            className="bg-primary h-3 rounded-full text-2xl"
             initial={{ width: 0 }}
             animate={{ width: `${programProgress}%` }}
             transition={{ duration: 0.8, ease: "easeOut" }}

@@ -33,7 +33,7 @@ export default function LatestResults1({ matches }) {
               key={match.id}
               className={`ring-custom-gray-200 mt-0.5 rounded-t-3xl bg-black ring-1 ${match.wld === "win" ? "ring-win" : match.wld === "lose" ? "ring-lose" : match.wld === "draw" ? "ring-draw" : ""}`}
             >
-              <h4 className="text-xs-md/tight px-4 py-4 text-center font-bold text-white md:px-8">
+              <h4 className="text-xl px-4 py-4 text-center font-bold text-white md:px-8">
                 {match?.location}
                 <br />
                 {formatDate(match?.date)}
@@ -51,7 +51,7 @@ export default function LatestResults1({ matches }) {
                             fill="none"
                             xmlns="http://www.w3.org/2000/svg"
                             className={`text-primary relative h-6 w-6 shrink-0`}
-                            style={{ top: "-2px" }}
+                            style={{ top: "0px" }}
                           >
                             <path
                               d="M201.646 416.137C144.946 389.951 97.469 343.545 60.543 278.221C30.33 224.771 13.58 169.737 4.849 132.979L0 112.558L20.478 108.517C29.676 106.701 36.353 98.519 36.353 89.064C36.353 87.535 36.171 85.986 35.811 84.46L31.579 64.862L68.813 56.045V18.129L83.947 14.518C125.355 4.884 167.706 0 210.202 0C252.699 0 294.762 4.884 336.17 14.518L351.208 18.129V56.045L388.444 64.862L384.015 84.461C383.657 85.986 383.572 87.538 383.572 89.064C383.572 98.519 390.297 106.701 399.497 108.517L420 112.558L415.161 132.981C406.428 169.739 389.684 224.774 359.473 278.221C322.549 343.545 275.075 389.95 218.367 416.141L210.01 420L201.646 416.137Z"
@@ -76,7 +76,7 @@ export default function LatestResults1({ matches }) {
                               className="fill-white"
                             />
                           </svg>
-                          <div className="text-custom-gray-900 text-md min-w-0 font-bold dark:text-white">
+                          <div className="text-custom-gray-900 text-xl min-w-0 font-bold dark:text-white">
                             <div className="hidden max-w-[120px] truncate sm:inline-block">
                               TótÉk
                             </div>
@@ -85,7 +85,7 @@ export default function LatestResults1({ matches }) {
                         </div>
                         {match.goals?.length > 0 && (
                           <div className="mt-3 text-sm text-gray-200">
-                            <div className="text-md list-inside list-disc">
+                            <div className="text-lg list-inside list-disc">
                               {match.goals.map((goal, ix) => (
                                 <div
                                   className="text-md mb-2 flex gap-2 md:mb-0"
@@ -101,7 +101,7 @@ export default function LatestResults1({ matches }) {
                                   <div className="flex flex-col gap-0 md:flex-row md:gap-2">
                                     {goal.scorer?.name}
                                     {goal.assist && (
-                                      <span className="text-md text-gray-400">
+                                      <span className="text-lg text-gray-400">
                                         {" "}
                                         (gólpassz: {goal.assist.name})
                                       </span>
@@ -113,7 +113,7 @@ export default function LatestResults1({ matches }) {
                           </div>
                         )}
                       </div>
-                      <div className="text-custom-gray-900 items-top text-md relative inline-flex gap-x-2 font-bold group-first/item:after:absolute group-first/item:after:start-full group-first/item:after:top-0 group-first/item:after:translate-x-1/2 group-first/item:after:content-['-'] dark:text-white">
+                      <div className="text-custom-gray-900 items-top text-lg relative inline-flex gap-x-2 font-bold group-first/item:after:absolute group-first/item:after:start-full group-first/item:after:top-0 group-first/item:after:translate-x-1/2 group-first/item:after:content-['-'] dark:text-white">
                         <div>{match.result?.split("-")[0]}</div>
                       </div>
                     </div>
@@ -124,7 +124,7 @@ export default function LatestResults1({ matches }) {
                           fill="none"
                           xmlns="http://www.w3.org/2000/svg"
                           className={`relative h-6 w-6 shrink-0`}
-                          style={{ top: "-2px" }}
+                          style={{ top: "0px" }}
                         >
                           <path
                             d="M201.646 416.137C144.946 389.951 97.469 343.545 60.543 278.221C30.33 224.771 13.58 169.737 4.849 132.979L0 112.558L20.478 108.517C29.676 106.701 36.353 98.519 36.353 89.064C36.353 87.535 36.171 85.986 35.811 84.46L31.579 64.862L68.813 56.045V18.129L83.947 14.518C125.355 4.884 167.706 0 210.202 0C252.699 0 294.762 4.884 336.17 14.518L351.208 18.129V56.045L388.444 64.862L384.015 84.461C383.657 85.986 383.572 87.538 383.572 89.064C383.572 98.519 390.297 106.701 399.497 108.517L420 112.558L415.161 132.981C406.428 169.739 389.684 224.774 359.473 278.221C322.549 343.545 275.075 389.95 218.367 416.141L210.01 420L201.646 416.137Z"
@@ -149,7 +149,7 @@ export default function LatestResults1({ matches }) {
                             className="fill-white"
                           />
                         </svg>
-                        <div className="text-custom-gray-900 text-md min-w-0 font-bold dark:text-white">
+                        <div className="text-custom-gray-900 text-lg min-w-0 font-bold dark:text-white">
                           <div className="hidden max-w-[120px] truncate sm:inline-block">
                             {match.opponent}
                           </div>
@@ -158,7 +158,7 @@ export default function LatestResults1({ matches }) {
                           </div>
                         </div>
                       </div>
-                      <div className="text-custom-gray-900 items-top text-md relative inline-flex gap-x-2 font-bold group-first/item:after:absolute group-first/item:after:start-full group-first/item:after:top-0 group-first/item:after:translate-x-1/2 group-first/item:after:content-['-'] dark:text-white">
+                      <div className="text-custom-gray-900 items-top text-lg relative inline-flex gap-x-2 font-bold group-first/item:after:absolute group-first/item:after:start-full group-first/item:after:top-0 group-first/item:after:translate-x-1/2 group-first/item:after:content-['-'] dark:text-white">
                         {<div>{match.result?.split("-")[1]}</div>}
                       </div>
                     </div>

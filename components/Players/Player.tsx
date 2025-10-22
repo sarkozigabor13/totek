@@ -64,14 +64,14 @@ const SinglePlayer = ({ player }: { player: any }) => {
                 <h2 className="mt-0! text-[22px]/tight font-bold tracking-tight">
                   {name}
                 </h2>
-                <div className="text-sm">{position}</div>
+                <div className="text-lg">{position}</div>
               </div>
             </div>
             <div className="mx-auto w-fit px-2 py-5 text-slate-800 dark:text-white">
               <div className="divide-custom-gray-200 dark:divide-custom-gray-600 grid grid-cols-3 divide-x border-y py-2">
                 {stats.slice(0, 3).map((statistic) => (
                   <div key={statistic.label} className="px-7 text-center">
-                    <div className="mb-2 text-sm/tight font-bold">
+                    <div className="mb-2 text-lg/tight font-bold">
                       {statistic.value}
                     </div>
                     <div className="text-2xs/tight uppercase">
@@ -85,10 +85,10 @@ const SinglePlayer = ({ player }: { player: any }) => {
               <div className="divide-custom-gray-200 dark:divide-custom-gray-600 grid grid-cols-3 divide-x border-b py-2">
                 {stats.slice(3, 6).map((statistic) => (
                   <div key={statistic.label} className="px-7 text-center">
-                    <div className="mb-2 text-sm/tight font-bold">
+                    <div className="mb-2 text-lg/tight font-bold">
                       {statistic.value}
                     </div>
-                    <div className="text-2xs/tight uppercase">
+                    <div className="text-lg/tight uppercase">
                       {statistic.label}
                     </div>
                   </div>

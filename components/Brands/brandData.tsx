@@ -5,14 +5,14 @@ const brandData: Brand[] = [
     id: 0.25,
     name: "Borpatika",
     href: "https://borpatika1986.hu/",
-    image: "/images/brand/brand-light-01.png",
+    image: "/images/brand/brand-dark-01.png",
     imageLight: "/images/brand/brand-dark-01.png",
   },
   {
     id: 0.3,
     name: "Beac",
     href: "https://www.beacfoci.hu/tournament/elte-beac-lagymanyosi-bajnoksag/kedd-d-liga?fbclid=IwY2xjawNLbfxleHRuA2FlbQIxMABicmlkETFVZlZpY2ZtVTFsNXB6YmpLAR6y6dY7mcA5jud4CSxtvdbqQEljJp7-a7-8Fj2m-WNA_jde2-FucuwcdWhoSA_aem_2hsMIgj-nKty69hCZYNLGw",
-    image: "/images/brand/brand-light-02.png",
+    image: "/images/brand/brand-dark-02.png",
     imageLight: "/images/brand/brand-dark-02.png",
     grayscale: true
   },

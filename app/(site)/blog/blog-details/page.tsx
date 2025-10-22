@@ -88,7 +88,7 @@ const SingleBlogPage = async () => {
                   </div>
                 </div>
 
-                <h2 className="mb-5 mt-11 text-3xl font-semibold text-black dark:text-white 2xl:text-sectiontitle2">
+                <h2 className="mb-5 mt-11 text-4xl font-semibold text-black dark:text-white 2xl:text-sectiontitle2">
                   Kobe Steel plant that supplied
                 </h2>
 

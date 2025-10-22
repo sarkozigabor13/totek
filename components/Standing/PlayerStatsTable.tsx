@@ -92,7 +92,7 @@ export default function PlayerStatsTable({
                 ).map(([key, label]) => (
                   <th
                     key={key}
-                    className="cursor-pointer px-3 py-2 text-center select-none"
+                    className="cursor-pointer px-3 py-2 text-center select-none text-md"
                     onClick={() => requestSort(key)}
                   >
                     <div
@@ -112,7 +112,7 @@ export default function PlayerStatsTable({
                     i !== sortedStats.length - 1
                       ? "border-b border-gray-500"
                       : ""
-                  } hover:bg-blacksection`}
+                  } hover:bg-blacksection text-lg`}
                 >
                   <td className="px-3 py-2 text-start">{player.name}</td>
                   <td className="px-3 py-2 text-center">

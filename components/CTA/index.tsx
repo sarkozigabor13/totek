@@ -28,7 +28,7 @@ const CTA = () => {
               viewport={{ once: true }}
               className="animate_left md:w-[70%] lg:w-1/2"
             >
-              <h2 className="mb-4 w-11/12 text-3xl font-bold text-black dark:text-white xl:text-sectiontitle4">
+              <h2 className="mb-4 w-11/12 text-4xl font-bold text-black dark:text-white xl:text-sectiontitle4">
                 Join With Us Today & Increase Your Productivity
               </h2>
               <p>

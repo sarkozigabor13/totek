@@ -96,7 +96,7 @@ const Matches = () => {
 
           {/* Meccs rész */}
           <div className="mt-10 flex flex-col gap-2">
-            <div className="flex flex-col justify-between gap-2 lg:flex-row text-md">
+            <div className="flex flex-col justify-between gap-2 lg:flex-row text-lg">
               <p className="text-md">
                 <b>Meccsek száma:</b> {matchStats.played} / {matchStats.total}
               </p>

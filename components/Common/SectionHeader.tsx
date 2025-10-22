@@ -37,19 +37,19 @@ const SectionHeader = ({
             align === "left" ? "" : "mx-auto"
           }`}
         >
-          <span className="text-sectiontitle font-medium text-black dark:text-white">
+          <span className="text-2xl  font-medium text-black dark:text-white">
             {title}
           </span>
         </div>
         <h2
-          className={`xl:text-sectiontitle3 mb-4 text-3xl font-bold text-black md:w-4/5 xl:w-1/2 dark:text-white ${
+          className={`xl:text-sectiontitle3 mb-4 text-4xl font-bold text-black md:w-4/5 xl:w-1/2 dark:text-white ${
             align === "left" ? "" : "mx-auto"
           }`}
         >
           {subtitle}
         </h2>
         <p
-          className={`md:w-4/5 lg:w-3/5 xl:w-[46%] ${
+          className={`md:w-4/5 lg:w-3/5 xl:w-[46%] text-3xl  ${
             align === "left" ? "" : "mx-auto"
           }`}
         >
