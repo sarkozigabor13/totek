@@ -10,19 +10,24 @@ type GoalsStatsPanelProps = {
 export default function GoalsStatsPanel({ stats }: GoalsStatsPanelProps) {
   if (!stats || stats.length === 0) return null;
 
-  const topScorer = stats.reduce((prev, curr) =>
-    curr.goals > prev.goals ? curr : prev,
-  );
+const topScorer = stats.reduce(
+  (prev, curr) => (curr.goals > prev.goals ? curr : prev),
+  stats[0] || { id: 0, name: "", goals: 0, assists: 0, total: 0, avgGoals: "—", avgAssist: "—", minutesPerGoal: "—", matchesPlayed: 0 }
+);
 
-  const topAssist = stats.reduce((prev, curr) =>
-    curr.assists > prev.assists ? curr : prev,
-  );
+const topAssist = stats.reduce(
+  (prev, curr) => (curr.assists > prev.assists ? curr : prev),
+  stats[0] || { id: 0, name: "", goals: 0, assists: 0, total: 0, avgGoals: "—", avgAssist: "—", minutesPerGoal: "—", matchesPlayed: 0 }
+);
 
-  const bestEfficiency = stats
-    .filter((p) => p.goals > 0 && p.minutesPerGoal !== "—")
-    .reduce((prev, curr) =>
+const bestEfficiency = stats
+  .filter((p) => p.goals > 0 && p.minutesPerGoal !== "—")
+  .reduce(
+    (prev, curr) =>
       Number(curr.minutesPerGoal) < Number(prev.minutesPerGoal) ? curr : prev,
-    );
+    stats[0] || { id: 0, name: "", goals: 0, assists: 0, total: 0, avgGoals: "—", avgAssist: "—", minutesPerGoal: "—", matchesPlayed: 0 }
+  );
+
 
   return (
     <motion.div

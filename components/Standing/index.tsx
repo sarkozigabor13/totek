@@ -9,6 +9,7 @@ import { supabase } from "@/utils/supbase/client";
 import SectionHeader from "../Common/SectionHeader";
 import PlayerStatsTable from "./PlayerStatsTable";
 import GoalsStatsPanel from "./GoalsStatsPanel";
+import LeagueSelector from "../LeagueSelector/LeagueSelector";
 
 export type TeamType = {
   rank: number;
@@ -35,16 +36,21 @@ export type PlayerStat = {
   matchesPlayed: number;
 };
 
-const Standing = () => {
+export function Standing() {
+  const [selectedLeagueId, setSelectedLeagueId] = useState<number | null>(null);
   const [standings, setStandings] = useState<TeamType[]>([]);
   const [stats, setStats] = useState<PlayerStat[]>([]);
   const [loading, setLoading] = useState(true);
 
+  // --- Tabella lekérése a kiválasztott league alapján ---
   useEffect(() => {
+    if (!selectedLeagueId) return;
+
     const fetchStandings = async () => {
       const { data, error } = await supabase
         .from("league_table")
         .select("*")
+        .eq("league_id", selectedLeagueId)
         .order("rank", { ascending: true });
 
       if (error) console.error(error);
@@ -52,58 +58,44 @@ const Standing = () => {
     };
 
     fetchStandings();
-  }, []);
+  }, [selectedLeagueId]);
+
+  // --- Statisztikák lekérése ---
   useEffect(() => {
+    if (!selectedLeagueId) return;
+
     const fetchStats = async () => {
+      setLoading(true);
       try {
-        const { data: players, error: playersError } = await supabase
+        const { data: players } = await supabase
           .from("players")
           .select("id, name");
 
-        const { data: goals, error: goalsError } = await supabase
+        const { data: matches } = await supabase
+          .from("matches")
+          .select("id")
+          .eq("league_id", selectedLeagueId);
+
+        const matchIds = matches?.map((m) => m.id) || [];
+
+        const { data: goals } = await supabase
           .from("goals")
-          .select("scorer_id, assist_id, match_id");
+          .select("scorer_id, assist_id, match_id")
+          .in("match_id", matchIds);
 
-        // csak a múltban lejátszott meccseket kérjük le
-        const today = new Date().toISOString().split("T")[0];
-
-        const { data: attendance, error: attendanceError } = await supabase
+        const { data: attendance } = await supabase
           .from("match_attendance")
           .select("player_id, match_id, attending_match, matches!inner(date)")
           .eq("attending_match", true)
-          .lt("matches.date", today); // csak múltbeli meccsek
+          .in("match_id", matchIds);
 
-        if (playersError || goalsError || attendanceError) {
-          console.error(playersError || goalsError || attendanceError);
-          return;
-        }
+        if (!players || !goals || !attendance) return;
 
-        const stats = players!.map((player) => {
-          const goalsScored = goals!.filter(
-            (g) => g.scorer_id === player.id,
-          ).length;
-
-          const assistsGiven = goals!.filter(
-            (g) => g.assist_id === player.id,
-          ).length;
-
+        const stats = players.map((player) => {
+          const goalsScored = goals.filter((g) => g.scorer_id === player.id).length;
+          const assistsGiven = goals.filter((g) => g.assist_id === player.id).length;
           const total = goalsScored + assistsGiven;
-
-          // hány meccsen vett részt (csak múltbeli)
-          const matchesPlayed = attendance!.filter(
-            (a) => a.player_id === player.id,
-          ).length;
-
-          const avgGoals =
-            matchesPlayed > 0 ? (goalsScored / matchesPlayed).toFixed(2) : "—";
-
-          const avgAssist =
-            matchesPlayed > 0 ? (assistsGiven / matchesPlayed).toFixed(2) : "—";
-
-          const minutesPerGoal =
-            goalsScored > 0 && matchesPlayed > 0
-              ? ((matchesPlayed * 40) / goalsScored).toFixed(0)
-              : "—";
+          const matchesPlayed = attendance.filter((a) => a.player_id === player.id).length;
 
           return {
             id: player.id,
@@ -111,10 +103,13 @@ const Standing = () => {
             goals: goalsScored,
             assists: assistsGiven,
             total,
-            avgGoals,
-            avgAssist,
-            minutesPerGoal,
-            matchesPlayed: matchesPlayed,
+            avgGoals: matchesPlayed > 0 ? (goalsScored / matchesPlayed).toFixed(2) : "—",
+            avgAssist: matchesPlayed > 0 ? (assistsGiven / matchesPlayed).toFixed(2) : "—",
+            minutesPerGoal:
+              goalsScored > 0 && matchesPlayed > 0
+                ? ((matchesPlayed * 40) / goalsScored).toFixed(0)
+                : "—",
+            matchesPlayed,
           };
         });
 
@@ -127,42 +122,45 @@ const Standing = () => {
     };
 
     fetchStats();
-  }, []);
+  }, [selectedLeagueId]);
+
   return (
     <>
-      {/* <!-- ===== About Start ===== --> */}
-      <section
-        id="standing"
-        className="overflow-hidden pt-20 pb-10 lg:pb-25 xl:pb-30"
-      >
+      <section className="overflow-hidden pt-20 pb-10 lg:pb-25 xl:pb-30">
         <SectionHeader
           headerInfo={{
             title: "Tabellák",
             subtitle: "",
-            description: `Az alábbi szekcióban a csapattal kapcsolatos tabellák megtekinthetőek.`,
+            description:
+              "Az alábbi szekcióban a csapattal kapcsolatos tabellák megtekinthetőek.",
           }}
         />
+
         <div className="max-w-c-1235 mx-auto px-4 pt-10 md:px-8 xl:px-0">
+          {/* --- League selector --- */}
+          <LeagueSelector
+            selectedLeagueId={selectedLeagueId}
+            onLeagueChange={setSelectedLeagueId}
+          />
+
+          {/* --- Standings + Stats --- */}
           <div className="flex flex-col items-center gap-4 lg:flex-row lg:gap-16">
             <Standings1 standings={standings} />
             <StatsPanelAdvanced standings={standings} />
           </div>
         </div>
       </section>
-      {/* <!-- ===== About End ===== --> */}
 
-      {/* <!-- ===== About Two Start ===== --> */}
-      <section   className="overflow-hidden pb-10 lg:pb-25 xl:pb-30">
+      <section className="overflow-hidden pb-10 lg:pb-25 xl:pb-30">
         <div className="max-w-c-1235 mx-auto overflow-hidden px-4 md:px-8 2xl:px-0">
-        <div className="flex flex-col-reverse lg:flex-col items-center gap-4 lg:flex-row lg:gap-16">
+          <div className="flex flex-col-reverse lg:flex-col items-center gap-4 lg:flex-row lg:gap-16">
             <GoalsStatsPanel stats={stats} />
             <PlayerStatsTable loading={loading} stats={stats} />
           </div>
         </div>
       </section>
-      {/* <!-- ===== About Two End ===== --> */}
     </>
   );
-};
+}
 
 export default Standing;

@@ -5,6 +5,7 @@ import SectionHeader from "../Common/SectionHeader";
 import { supabase } from "@/utils/supbase/client";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import LeagueSelector from "../LeagueSelector/LeagueSelector";
 
 type Match = {
   id: string;
@@ -21,33 +22,37 @@ const Matches = () => {
     remaining: 0,
     progress: 0,
   });
+  const [selectedLeagueId, setSelectedLeagueId] = useState<number | null | 'all'>(null);
 
   useEffect(() => {
+    if (!selectedLeagueId) return;
     const fetchMatches = async () => {
       const { data, error } = await supabase
         .from("matches")
         .select(
           `
-        id,
-        date,
-        location,
-        result,
-        wld,
-        opponent,
-        goals (
           id,
-          scorer:scorer_id (
+          date,
+          location,
+          result,
+          wld,
+          opponent,
+          goals (
             id,
-            name
-          ),
-          assist:assist_id (
-            id,
-            name
+            scorer:scorer_id (
+              id,
+              name
+            ),
+            assist:assist_id (
+              id,
+              name
+            )
           )
+        `,
         )
-      `,
-        )
+        .eq("league_id", selectedLeagueId)
         .order("date");
+
       if (error) {
         console.error(error);
         return;
@@ -55,15 +60,12 @@ const Matches = () => {
 
       if (data) {
         const now = new Date();
-
         const played = data.filter(
           (match) => new Date(match.date) <= now,
         ).length;
-
         const remaining = data.filter(
           (match) => new Date(match.date) > now,
         ).length;
-
         const total = data.length;
         const progress = total > 0 ? Math.round((played / total) * 100) : 0;
 
@@ -73,8 +75,7 @@ const Matches = () => {
     };
 
     fetchMatches();
-  }, []);
-
+  }, [selectedLeagueId]);
   return (
     <div className="relative">
       {/* <!-- ===== Features Start ===== --> */}
@@ -93,10 +94,16 @@ const Matches = () => {
             }}
           />
           {/* <!-- Section Title End --> */}
+          <div className="max-w-c-1315 mx-auto mt-4 px-4 md:px-8 xl:px-0">
+            <LeagueSelector
+              selectedLeagueId={selectedLeagueId}
+              onLeagueChange={(leagueId) => setSelectedLeagueId(leagueId)}
+            />
+          </div>
 
           {/* Meccs rész */}
           <div className="mt-10 flex flex-col gap-2">
-            <div className="flex flex-col justify-between gap-2 lg:flex-row text-lg">
+            <div className="flex flex-col justify-between gap-2 text-lg lg:flex-row">
               <p className="text-md">
                 <b>Meccsek száma:</b> {matchStats.played} / {matchStats.total}
               </p>
