@@ -126,7 +126,7 @@ export function Standing() {
 
   return (
     <>
-      <section className="overflow-hidden pt-20 pb-10 lg:pb-25 xl:pb-30">
+      <section    id="standing" className="overflow-hidden pt-20 pb-10 lg:pb-25 xl:pb-30">
         <SectionHeader
           headerInfo={{
             title: "Tabellák",
