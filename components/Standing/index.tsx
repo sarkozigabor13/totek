@@ -37,7 +37,7 @@ export type PlayerStat = {
 };
 
 export function Standing() {
-  const [selectedLeagueId, setSelectedLeagueId] = useState<number | null>(null);
+  const [selectedLeagueId, setSelectedLeagueId] = useState<number | null | 'all'>(null);
   const [standings, setStandings] = useState<TeamType[]>([]);
   const [stats, setStats] = useState<PlayerStat[]>([]);
   const [loading, setLoading] = useState(true);
