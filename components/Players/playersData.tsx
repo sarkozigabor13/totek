@@ -206,6 +206,52 @@ const players = [
       { label: "Állóképesség", value: 2 },
     ],
   },
+  {
+    name: "Tóth Ábel",
+    img: "/images/team/abel.png",
+    position: "Csatár",
+    id: 10,
+    stats: [
+      { label: "Mérkőzés", value: 0 },
+      { label: "Győzelem", value: 0 },
+      { label: "Vereség", value: 0 },
+      { label: "Gól", value: 0 },
+      { label: "Gólpassz", value: 0 },
+      { label: "Döntetlen", value: 0 },
+
+    ],
+    skills: [
+      { label: "Támadás", value: 4 },
+      { label: "Védekezés", value: 3 },
+      { label: "Gyorsaság", value: 5 },
+      { label: "Passzolás", value: 4 },
+      { label: "Cselezés", value: 3 },
+      { label: "Állóképesség", value: 4 },
+    ],
+  },
+    {
+    name: "Tóth Kornél",
+    img: "/images/team/kornel.png",
+    position: "Védő",
+    id: 11,
+    stats: [
+      { label: "Mérkőzés", value: 0 },
+      { label: "Győzelem", value: 0 },
+      { label: "Vereség", value: 0 },
+      { label: "Gól", value: 0 },
+      { label: "Gólpassz", value: 0 },
+      { label: "Döntetlen", value: 0 },
+
+    ],
+    skills: [
+      { label: "Támadás", value: 3 },
+      { label: "Védekezés", value: 5 },
+      { label: "Gyorsaság", value: 5 },
+      { label: "Passzolás", value: 4 },
+      { label: "Cselezés", value: 2 },
+      { label: "Állóképesség", value: 5 },
+    ],
+  },
 ];
 
 export default players;
