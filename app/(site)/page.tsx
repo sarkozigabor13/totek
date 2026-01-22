@@ -16,7 +16,7 @@ import Players from "@/components/Players";
 import HighlihtComponent from "@/components/Highlight";
 
 export const metadata: Metadata = {
-  title: "Tóték - 2025 - Ősz",
+  title: "Tóték - 2026 - Tél",
 
   // other metadata
   description: "A Tóték focicsapat hivatalos management oldala",
