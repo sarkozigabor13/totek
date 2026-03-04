@@ -9,7 +9,7 @@ export const getGoogleCalendarUrl = (match) => {
   const format = (date) => date.toISOString().replace(/-|:|\.\d+/g, "");
 
   const details = {
-    text: `Meccs: TótÉk vs ${match.opponent}`,
+    text: `⚽️ TótÉk vs ${match.opponent} ⚽️`,
     dates: `${format(startDate)}/${format(endDate)}`,
     details: `Helyszín: ${match.location}. Hajrá TótÉk!`,
     location: match.location,
