@@ -4,6 +4,7 @@ import Image from "next/image";
 import ChronicleList from "./ChronicleList";
 import ChronicleSection from "./ChronicleSection";
 import { motion } from "framer-motion";
+import { getGoogleCalendarUrl } from "@/utils/calendar/googlecalendar";
 
 export default function LatestResults1({ matches }) {
   return (
@@ -222,9 +223,27 @@ export default function LatestResults1({ matches }) {
                           TótÉk
                         </span>
                       </div>
-      <div className="px-4 py-4 text-center text-gray-400">
-              Még nem lejátszott
-            </div>
+                      <div className="flex flex-col items-center gap-2 px-4 py-4">
+                        <span className="text-gray-400">
+                          Még nem lejátszott
+                        </span>
+                        <a
+                          href={getGoogleCalendarUrl(match)}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-2 rounded-lg bg-white/10 px-3 py-1.5 text-sm font-medium text-white transition-colors hover:bg-white/20"
+                        >
+                          <svg
+                            viewBox="0 0 24 24"
+                            width="16"
+                            height="16"
+                            fill="currentColor"
+                          >
+                            <path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2zm-7 5h5v5h-5z" />
+                          </svg>
+                          Naptárhoz adás
+                        </a>
+                      </div>
                       {/* Ellenfél */}
                       <div className="flex items-center justify-end gap-2">
                         <span className="truncate text-lg font-bold text-gray-400">
